@@ -1,0 +1,64 @@
+h1{
+    text-align: center;
+}
+/* HomePage.css */
+.yacht-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+  }
+  
+  .yacht-item {
+    width: 300px;
+    padding: 20px;
+    background-color: #766d6d95;
+    color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .yacht-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .yacht-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .yacht-item img:hover {
+    transform: scale(1.05);
+  }
+  
+  .yacht-item h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+  }
+  
+  .yacht-item p {
+    margin: 5px 0;
+    color: #666;
+  }
+  
+  .yacht-item a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .yacht-item a:hover {
+    background-color: #0056b3;
+  }
+  
