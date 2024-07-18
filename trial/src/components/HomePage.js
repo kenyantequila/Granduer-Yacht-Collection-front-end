@@ -1,24 +1,24 @@
-// src/components/HomePage.js
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getYachts } from '../api/api';
 import './HomePage.css';
-import YachtDetailsPage from './YachtDetailsPage';
 
-function HomePage() {
+const HomePage = () => {
   const [yachts, setYachts] = useState([]);
-  const [loading, setLoading] = useState(true); // Optional: Loading state
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchYachts = async () => {
       try {
-        const response = await getYachts();
-        setYachts(response); // Assuming response is an array of yachts
-        setLoading(false); // Optional: Set loading to false after fetching
+        const response = await fetch('http://localhost:5000/yachts');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setYachts(data);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching yachts:', error);
-        // Handle error state or show error message
-        setLoading(false); // Optional: Set loading to false on error
+        setLoading(false);
       }
     };
 
@@ -26,28 +26,26 @@ function HomePage() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>; // 
+    return <div>Loading...</div>;
   }
 
   return (
     <div>
       <Link to="/book">Book a Yacht</Link>
-      <YachtDetailsPage/>
-      <h1>Granduer Yachts Collection</h1>
+      <h1>Grandeur Yachts Collection</h1>
       <div className="yacht-list">
-        {yachts.map(yacht => (
+        {yachts.map((yacht) => (
           <div key={yacht.id} className="yacht-item">
             <img src={yacht.image} alt={yacht.name} />
             <h2>{yacht.name}</h2>
             <p>{yacht.description}</p>
             <p>Price: {yacht.price}</p>
-            <Link to={`./YachtDetailsPage/${yacht.id}`}>View Details</Link> {YachtDetailsPage}
-            <YachtDetailsPage/>
+            <Link to={`/yacht/${yacht.id}`}>View Details</Link>
           </div>
         ))}
       </div>
     </div>
   );
-}
+};
 
 export default HomePage;

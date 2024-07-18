@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+/* import React, { useEffect, useState } from 'react';
 import { getBookings } from '../api/api';
 function BookingManagementPage() {
   const [bookings, setBookings] = useState([]);
@@ -34,3 +34,4 @@ function BookingManagementPage() {
 }
 
 export default BookingManagementPage;
+ */

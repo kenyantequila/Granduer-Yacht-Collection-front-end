@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import LoginForm from './components/LoginForm';
 import RegistrationForm from './components/RegistrationForm';
 import HomePage from './components/HomePage';
-import YachtDetailsPage from './components/YachtDetailsPage';
-import BookingForm from './components/BookingForm';
-import BookingManagementPage from './components/BookingManagementPage';
-import YachtCard from './components/YachtCard';
+import AdminLoginForm from './components/AdminLoginForm';
+import AdminDashboard from './components/AdminDashboard';
+import YachtDetails from './components/YachtDetails';
+import YachtBookings from './components/YachtBookings'; // Corrected import
 
 function App() {
   return (
@@ -15,14 +15,12 @@ function App() {
         <Routes>
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<RegistrationForm />} />
-          <Route path="/" element={<Navigate to="/homePage" />} />
+          <Route path="/admin-login" element={<AdminLoginForm />} />
           <Route path="/homePage" element={<HomePage />} />
-          <Route path='yachtcard' element={<YachtCard/>}/>
-          <Route path="/yacht/:id" element={<YachtDetailsPage />} />
-          <Route path="/book" element={<BookingForm />} />
-          <Route path="/manage-bookings" element={<BookingManagementPage />} />
-          
-          
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/yacht/:id" element={<YachtDetails />} />
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/admin/yachts/:yachtId/bookings" element={<YachtBookings />} /> {/* Updated path and param */}
         </Routes>
       </div>
     </Router>

@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from 'react';
+/* import React, { useState , useEffect} from 'react';
 import { createBooking } from '../api/api';
 import './BookingForm.css';
 
@@ -56,3 +56,4 @@ function BookingForm() {
 }
 
 export default BookingForm;
+ */

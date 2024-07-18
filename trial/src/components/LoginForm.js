@@ -1,27 +1,16 @@
-import React, { useState,useEffect } from 'react';
-import { loginUser } from '../api/api';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './FormStyles.css';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  useEffect(() =>{
-    const fetchLogInUser = async() =>{
-      try {
-        const response = await loginUser(username, password);
-        console.log('Logged in successfully:', response);
-      } catch (error) {
-        console.error('Failed to log in:', error.message);
-      }
-    }
-    fetchLogInUser();
-  }
-  )
+  const navigate = useNavigate();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
-    // Example login API call
     try {
-      const response = await fetch('', {
+      const response = await fetch('http://localhost:5000/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,14 +23,17 @@ const LoginForm = () => {
         throw new Error(errorData.message || 'Login failed');
       }
 
-      console.log('Login successful');
+      const data = await response.json();
+      alert('Logged in successfully:', data);
+      navigate('/homePage'); // Navigate to HomePage after successful login
     } catch (error) {
-      console.error('Login error:', error.message);
+      alert('Failed to log in:', error.message);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-container">
+      <h2>Login</h2>
       <label>
         Username:
         <input
@@ -60,9 +52,12 @@ const LoginForm = () => {
           required
         />
       </label>
-      <button type="submit">Login</button>
+      <button type="submit" className="form-button">Login</button>
       <p>
         Don't have an account? <a href="/register">Register here</a>
+      </p>
+      <p>
+        Are you an admin? <a href="/admin-login">Login here</a>
       </p>
     </form>
   );
