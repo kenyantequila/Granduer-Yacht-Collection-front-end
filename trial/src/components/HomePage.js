@@ -31,7 +31,6 @@ const HomePage = () => {
 
   return (
     <div>
-      <Link to="/book">Book a Yacht</Link>
       <h1>Grandeur Yachts Collection</h1>
       <div className="yacht-list">
         {yachts.map((yacht) => (

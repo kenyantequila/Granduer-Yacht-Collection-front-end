@@ -32,6 +32,7 @@ const LoginForm = () => {
   };
 
   return (
+    <div className="register-container">
     <form onSubmit={handleSubmit} className="form-container">
       <h2>Login</h2>
       <label>
@@ -60,6 +61,7 @@ const LoginForm = () => {
         Are you an admin? <a href="/admin-login">Login here</a>
       </p>
     </form>
+    </div>
   );
 };
 

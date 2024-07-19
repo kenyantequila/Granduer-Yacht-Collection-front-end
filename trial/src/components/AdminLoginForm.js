@@ -35,6 +35,7 @@ const AdminLoginForm = () => {
     };
 
     return (
+        <div className="register-container">
         <form onSubmit={handleSubmit} className="form-container">
             <h2>Admin Login</h2>
             <label>
@@ -59,6 +60,7 @@ const AdminLoginForm = () => {
                 Login
             </button>
         </form>
+    </div>
     );
 };
 

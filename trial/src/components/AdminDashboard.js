@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './AdminDashboard.css';
 import { Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
@@ -153,22 +154,23 @@ const AdminDashboard = () => {
                     <button type="submit">{selectedYacht ? 'Update Yacht' : 'Add Yacht'}</button>
                 </form>
             </div>
-
+               <h3>Yachts</h3>
             <div className="yacht-list">
-                <h3>Yachts</h3>
-                <ul>
+                 <div className="yacht-cards">
                     {yachts.map((yacht) => (
-                        <li key={yacht.id}>
+                        <div className="yacht-card" key={yacht.id}>
                             <h4>{yacht.name}</h4>
                             <p>{yacht.description}</p>
                             <p>Capacity: {yacht.capacity}</p>
                             <p>Price: ${yacht.price}</p>
                             <img src={yacht.image} alt={yacht.name} width="200" />
-                            <button onClick={() => handleEdit(yacht)}>Edit</button>
-                            <button onClick={() => handleDelete(yacht.id)}>Delete</button>
-                        </li>
+                            <div className="yacht-actions">
+                                <button onClick={() => handleEdit(yacht)}>Edit</button>
+                                <button onClick={() => handleDelete(yacht.id)}>Delete</button>
+                            </div>
+                        </div>
                     ))}
-                </ul>
+                </div>
             </div>
         </div>
     );

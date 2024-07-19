@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import './YatchDetails.css';
 
 const YachtDetails = () => {
   const { id } = useParams();
@@ -63,7 +64,8 @@ const YachtDetails = () => {
   }
 
   return (
-    <div>
+    <div className='yacht-container'>
+    <div className="yacht-details">
       <h1>{yacht.first_name}</h1>
       <img src={yacht.image} alt={yacht.first_name} />
       <p>{yacht.description}</p>
@@ -91,6 +93,7 @@ const YachtDetails = () => {
         </label>
       </div>
       <button onClick={handleBooking}>Book Now</button>
+    </div>
     </div>
   );
 };

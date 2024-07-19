@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './FormStyles.css';
+
 const RegistrationForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -35,6 +36,7 @@ const RegistrationForm = () => {
   };
 
   return (
+    <div className="register-container">
     <form onSubmit={handleSubmit} className="form-container">
       <h2>Register</h2>
       <label>
@@ -67,6 +69,7 @@ const RegistrationForm = () => {
       <button type="submit" className="form-button">Register</button>
       <p>Already have an acount <a href="/login">Login here</a> </p>
     </form>
+    </div>
   );
 };
 
